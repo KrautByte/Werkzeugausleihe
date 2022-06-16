@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-bordered border-secondary">
+        <thead>
+        <tr>
+            <th scope="col">Werkzeug Nr.</th>
+            <th scope="col">Bezeichnung</th>
+            <th scope="col">Beschreibung</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zeile in tabelle %}
+            <tr>
+                {% for zelle in zeile %}
+                    <td>{{ zelle }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+    <div class="border">
+        <h3 class="text text-center" style="padding-top: 10px;">Werkzeug hinzuf&uuml;gen</h3>
+        <form class="container" action="{{ url_for('werkzeuge') }}" method="post">
+            <div class="mb-3">
+                <label for="werkzeugBezeichnungInput" class="form-label">Bezeichnung</label>
+                <input type="text" class="form-control" name="Bezeichnung" id="werkzeugBezeichnungInput" placeholder="Schraubendreher">
+            </div>
+            <div class="mb-3">
+                <label for="werkzeugBeschreibungInput" class="form-label">Beschreibung</label>
+                <textarea class="form-control" name="Beschreibung" id="werkzeugBeschreibungInput" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

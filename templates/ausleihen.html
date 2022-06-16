@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-bordered border-secondary">
+        <thead>
+        <tr>
+            <th scope="col">Exemplar Nr.</th>
+            <th scope="col">Mitarbeiter Nr.</th>
+            <th scope="col">Ausleihdatum</th>
+            <th scope="col">R&uuml;ckgabedatum</th>
+            <th scope="col">Zur&uuml;ck gegeben am</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zeile in tabelle %}
+            <tr>
+                {% for zelle in zeile %}
+                    <td>{{ zelle }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="border">
+        <h3 class="text text-center" style="padding-top: 10px;">Ausleihe hinzuf&uuml;gen</h3>
+        <form class="container" action="{{ url_for('ausleihen') }}" method="post">
+            <div class="mb-3">
+                <label for="ausleiheExemplarNrInput" class="form-label">Exemplar Nr:</label>
+                <input type="text" class="form-control" name="ExemplarNr" id="ausleiheExemplarNrInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="ausleiheMitarbeiterNrInput" class="form-label">Mitarbeiter Nr:</label>
+                <input type="text" class="form-control" name="MitarbeiterNr" id="ausleiheMitarbeiterNrInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="ausleiheAusleihDatumInput" class="form-label">Ausgeliehen am:</label>
+                <input type="date" class="form-control" name="AusleihDatum" id="ausleiheAusleihDatumInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="ausleiheRueckgabeDatumInput" class="form-label">R&uuml;ckgabe am:</label>
+                <input type="date" class="form-control" name="RueckgabeDatum" id="ausleiheRueckgabeDatumInput"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="ausleiheZurueckGegebenAmInput" class="form-label">R&uuml;ckgabe erfolgte am:</label>
+                <input type="date" class="form-control" name="ZurueckGegebenAm" id="ausleiheZurueckGegebenAmInput"
+                >
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

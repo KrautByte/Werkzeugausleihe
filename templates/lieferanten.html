@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-bordered border-secondary">
+        <thead>
+        <tr>
+            <th scope="col">Lieferanten Nr.</th>
+            <th scope="col">Firma</th>
+            <th scope="col">Ansprechpartner Name</th>
+            <th scope="col">Ansprechpartner Email</th>
+            <th scope="col">Ansprechpartner Nummer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zeile in tabelle %}
+            <tr>
+                {% for zelle in zeile %}
+                    <td>{{ zelle }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="border">
+        <h3 class="text text-center" style="padding-top: 10px;">Lieferant hinzuf&uuml;gen</h3>
+        <form class="container" action="{{ url_for('lieferanten') }}" method="post">
+            <div class="mb-3">
+                <label for="lieferantFirmaInput" class="form-label">Firma</label>
+                <input type="text" class="form-control" name="Firma" id="lieferantFirmaInput"
+                       placeholder="Max Mustermann GmbH">
+            </div>
+            <div class="mb-3">
+                <label for="ansprechpartnerNameInput" class="form-label">Name</label>
+                <input type="text" class="form-control" name="Name" id="ansprechpartnerNameInput"
+                       placeholder="Max Mustermann">
+            </div>
+            <div class="mb-3">
+                <label for="ansprechpartnerEmailInput" class="form-label">Email Adresse</label>
+                <input type="email" class="form-control" name="Email" id="ansprechpartnerEmailInput"
+                       placeholder="max@mustermann.com">
+            </div>
+            <div class="mb-3">
+                <label for="ansprechpartnerTelefonInput" class="form-label">Telefonnummer</label>
+                <input type="tel" class="form-control" name="Telefonnummer" id="ansprechpartnerTelefonInput"
+                       placeholder="+1 6942069420">
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

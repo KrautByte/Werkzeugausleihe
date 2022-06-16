@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-bordered border-secondary">
+        <thead>
+        <tr>
+            <th scope="col">Mitarbeiter Nr.</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Geburtsdatum</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zeile in tabelle %}
+            <tr>
+                {% for zelle in zeile %}
+                    <td>{{ zelle }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="border">
+        <h3 class="text text-center" style="padding-top: 10px;">Mitarbeiter hinzuf&uuml;gen</h3>
+        <form class="container" action="{{ url_for('mitarbeiter') }}" method="post">
+            <div class="mb-3">
+                <label for="mitarbeiterNachnameInput" class="form-label">Nachname</label>
+                <input type="text" class="form-control" name="Nachname" id="mitarbeiterNachnameInput"
+                       placeholder="Mustermann">
+            </div>
+            <div class="mb-3">
+                <label for="mitarbeiterVornameInput" class="form-label">Vorname</label>
+                <input type="text" class="form-control" name="Vorname" id="mitarbeiterVornameInput"
+                       placeholder="Max">
+            </div>
+            <div class="mb-3">
+                <label for="mitarbeiterGeburtstagInput" class="form-label">Geburtstag</label>
+                <input type="date" class="form-control" name="Geburtstag" id="mitarbeiterGeburtstagInput"
+                       placeholder="31-12-2014">
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

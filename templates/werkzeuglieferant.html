@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-bordered border-secondary">
+        <thead>
+        <tr>
+            <th scope="col">Exemplar Nr.</th>
+            <th scope="col">Lieferant Nr.</th>
+            <th scope="col">Anschaffungsdatum</th>
+            <th scope="col">Anschaffungspreis</th>
+            <th scope="col">Werkzeugnummer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for zeile in tabelle %}
+            <tr>
+                {% for zelle in zeile %}
+                    <td>{{ zelle }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="border">
+        <h3 class="text text-center" style="padding-top: 10px;">Werkzeug Daten hinzuf&uuml;gen</h3>
+        <form class="container" action="{{ url_for('combined') }}" method="post">
+            <div class="mb-3">
+                <label for="werkzeugLieferantExemplarNrInput" class="form-label">Exemplar Nr:</label>
+                <input type="text" class="form-control" name="ExemplarNr" id="werkzeugLieferantExemplarNrInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="werkzeugLieferantLieferantNrInput" class="form-label">Lieferant Nr:</label>
+                <input type="text" class="form-control" name="LieferantNr" id="werkzeugLieferantLieferantNrInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="werkzeugLieferantAnschaffungsDatumInput" class="form-label">Ausgeschafft am:</label>
+                <input type="date" class="form-control" name="AnschaffungsDatum" id="werkzeugLieferantAnschaffungsDatumInput"
+                       placeholder="999">
+            </div>
+            <div class="mb-3">
+                <label for="werkzeugLieferantAnschaffungsPreisInput" class="form-label">Preis der Anschaffung:</label>
+                <input type="number" class="form-control" name="AnschaffungsPreis" id="werkzeugLieferantAnschaffungsPreisInput"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="werkzeugLieferantWerkzeugNrInput" class="form-label">Werkzeug Nr:</label>
+                <input type="number" class="form-control" name="WerkzeugNr" id="werkzeugLieferantWerkzeugNrInput"
+                >
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}
