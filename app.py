@@ -1,13 +1,6 @@
 import mariadb
 from flask import Flask, render_template, request, redirect, url_for
-
-config = {
-    'host': 'db.example.com',
-    'port': 3306,
-    'user': 'ausleihe',
-    'password': 'SuperGeheimesKennwort',
-    'database': 'WerkzeugAusleihe'
-}
+from config import config
 
 app = Flask(__name__)
 
